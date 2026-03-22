@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haoxuan Li - Personal Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('pku2.jpg') center center fixed;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.65);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            animation: slideIn 0.8s ease-out;
+            backdrop-filter: blur(6px);
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(240, 248, 255, 0.95) 100%);
+            color: #1a3a4a;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid #2d8b9e;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(45, 139, 158, 0.15) 0%, transparent 70%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #1a3a4a 0%, #2d8b9e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: #2d8b9e;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .contact-info a:hover {
+            color: #1a5f6f;
+            text-shadow: 0 0 10px rgba(45, 139, 158, 0.6);
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 0;
+        }
+
+        .left-column {
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 15px;
+        }
+
+        .right-column {
+            background: linear-gradient(135deg, rgba(248, 251, 252, 0.95) 0%, rgba(236, 245, 247, 0.9) 100%);
+            padding: 40px;
+            border-left: 3px solid #2d8b9e;
+        }
+
+        section {
+            margin-bottom: 35px;
+        }
+
+        h2 {
+            color: #1a3a4a;
+            font-size: 2em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #2d8b9e;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #2d8b9e, #5fbcd3);
+            animation: expand 0.6s ease-out forwards;
+            animation-play-state: paused;
+        }
+
+        section:hover h2::after {
+            animation-play-state: running;
+        }
+
+        @keyframes expand {
+            to {
+                width: 100%;
+            }
+        }
+
+        .entry {
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .entry:hover {
+            border-left-color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+
+        .entry-title {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .entry-location {
+            color: #2d8b9e;
+            font-weight: 600;
+        }
+
+        .entry-period {
+            color: #3d9970;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .entry-subtitle {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+
+        ul li {
+            position: relative;
+            margin-bottom: 8px;
+        }
+
+        ul li::before {
+            content: '▸';
+            color: #2d8b9e;
+            font-weight: bold;
+            position: absolute;
+            left: -20px;
+            transition: transform 0.3s ease;
+        }
+
+        ul li:hover::before {
+            transform: translateX(5px);
+            color: #3d9970;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid #2d8b9e;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(45, 139, 158, 0.4);
+            border-left: 4px solid #3d9970;
+        }
+
+        .skill-name {
+            font-weight: bold;
+            color: #1a3a4a;
+            margin-bottom: 5px;
+        }
+
+        .awards-list {
+            list-style: none;
+        }
+
+        .awards-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(45, 139, 158, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .awards-list li:hover {
+            background: rgba(45, 139, 158, 0.1);
+            padding-left: 10px;
+            border-radius: 5px;
+        }
+
+        .award-year {
+            color: #3d9970;
+            font-weight: bold;
+        }
+
+        .references-list {
+            list-style: none;
+        }
+
+        .references-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(45, 139, 158, 0.3);
+        }
+
+        .references-list strong {
+            color: #1a3a4a;
+        }
+
+        .coursework-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .coursework-item {
+            background: linear-gradient(135deg, rgba(45, 139, 158, 0.08) 0%, rgba(61, 153, 112, 0.08) 100%);
+            padding: 10px 15px;
+            border-radius: 8px;
+            border-left: 3px solid #2d8b9e;
+            transition: all 0.3s ease;
+        }
+
+        .coursework-item:hover {
+            transform: translateX(5px);
+            background: linear-gradient(135deg, rgba(45, 139, 158, 0.15) 0%, rgba(61, 153, 112, 0.15) 100%);
+            border-left-color: #3d9970;
+        }
+
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .coursework-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, rgba(45, 139, 158, 0.15), rgba(61, 153, 112, 0.15));
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #3d9970;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Haoxuan Li</h1>
+            <div class="contact-info">
+                <a href="mailto:haoxuanlee@stu.pku.edu.cn">📧 haoxuanlee@stu.pku.edu.cn</a>
+                <a href="https://www.linkedin.com/in/haoxuan-li-1bba67386" target="_blank">💼 LinkedIn</a>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-column">
+                <section>
+                    <h2>🎓 Education</h2>
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Peking University</span>
+                            <span class="entry-location">Beijing, China</span>
+                        </div>
+                        <div class="entry-subtitle">B.S. in Chemistry, GPA: 3.8/4</div>
+                        <div class="entry-period">Expected Jun 2026</div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>📚 Relevant Coursework</h2>
+                    <div class="coursework-grid">
+                        <div class="coursework-item">Advanced Electrochemistry</div>
+                        <div class="coursework-item">Machine Learning and its Applications in Chemistry</div>
+                        <div class="coursework-item">Principles of Economics</div>
+                        <div class="coursework-item">Hands on Lab Automation and Intelligence</div>
+                        <div class="coursework-item">Fundamentals of Chemical Engineering</div>
+                        <div class="coursework-item">Catalysis Chemistry</div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>💼 Experience</h2>
+                    
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Peking University - The Ma Group</span>
+                            <span class="entry-location">Beijing, China</span>
+                        </div>
+                        <div class="entry-subtitle">Undergraduate Research Intern – Prof. Ding Ma</div>
+                        <div class="entry-period">Sep 2025 - Present</div>
+                        <ul>
+                            <li>Working on catalytic conversion of renewable energy carriers for sustainable hydrogen production.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Rice University - The "CAT" Group</span>
+                            <span class="entry-location">Houston, Texas, USA</span>
+                        </div>
+                        <div class="entry-subtitle">Undergraduate Research Intern – Dr. Haotian Wang</div>
+                        <div class="entry-period">Jul 2025 - Sep 2025</div>
+                        <ul>
+                            <li>Developed an electrochemical separation method for selective ion extraction using advanced reactor design.</li>
+                        </ul>
+                    </div>
+
+                    <div class="entry">
+                        <div class="entry-header">
+                            <span class="entry-title">Peking University - Xu Lab</span>
+                            <span class="entry-location">Beijing, China</span>
+                        </div>
+                        <div class="entry-subtitle">Undergraduate Research Intern – Prof. Bingjun Xu and Dr. Xiaoxia Chang</div>
+                        <div class="entry-period">Feb 2024 - Sep 2025</div>
+                        <ul>
+                            <li>Investigated electrocatalytic CO₂ conversion for sustainable fuel synthesis.</li>
+                            <li>Conducted spectroscopic studies to understand reaction mechanisms and optimize catalyst performance.</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <section>
+                    <h2>⚡ Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <div class="skill-name">Electrochemistry</div>
+                            <div>operando IR/Raman spectroscopy analysis, PSE reactor assembly, electrode fabrication</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-name">Lab Automation</div>
+                            <div>5-axis robotic arm assembly, Arduino IDE programming (LLM-assisted), 3D modeling</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-name">Courses</div>
+                            <div>organic synthesis, spectroscopy analysis, machine learning</div>
+                        </div>
+                        <div class="skill-category">
+                            <div class="skill-name">Languages</div>
+                            <div>English (TOEFL 104/120), Chinese (Native)</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2> Selected Awards</h2>
+                    <ul class="awards-list">
+                        <li>
+                            <span>National Scholarship</span>
+                            <span class="award-year">2025, 2024</span>
+                        </li>
+                        <li>
+                            <span>Peking University "Pacemaker to Merit Student" Certificate</span>
+                            <span class="award-year">2025</span>
+                        </li>
+                        <li>
+                            <span>Peking University "Merit Student" Certificate</span>
+                            <span class="award-year">2024</span>
+                        </li>
+                        <li>
+                            <span>Peking University "Award for Contribution in Student Organizations" Certificate</span>
+                            <span class="award-year">2023</span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>👥 References</h2>
+                    <ul class="references-list">
+                        <li>
+                            <strong>Ding Ma</strong>, Professor, Peking University
+                        </li>
+                        <li>
+                            <strong>Haotian Wang</strong>, Associate Professor, Rice University
+                        </li>
+                        <li>
+                            <strong>Bingjun Xu</strong>, Professor, Peking University
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add scroll animations
+        document.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top < window.innerHeight && rect.bottom > 0) {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Add hover effects to entries
+        const entries = document.querySelectorAll('.entry');
+        entries.forEach(entry => {
+            entry.addEventListener('mouseenter', function() {
+                entries.forEach(e => {
+                    if (e !== entry) {
+                        e.style.opacity = '0.7';
+                    }
+                });
+            });
+            entry.addEventListener('mouseleave', function() {
+                entries.forEach(e => {
+                    e.style.opacity = '1';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
